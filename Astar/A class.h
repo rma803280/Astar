@@ -9,14 +9,14 @@ private:
 		bool isBlack;
 		int** path;
 		//int pathLength();
-		// Добавляет путь, увеличивает accum на величину _map[fromX,fromY].accum + this -> value
+		// Г„Г®ГЎГ ГўГ«ГїГҐГІ ГЇГіГІГј, ГіГўГҐГ«ГЁГ·ГЁГўГ ГҐГІ accum Г­Г  ГўГҐГ«ГЁГ·ГЁГ­Гі _map[fromX,fromY].accum + this -> value
 		void addPath(int fromX, int fromY);
 		Map();
 	};
 	static Map** _map;
-	static int _x;			// Ширина карты
-	static int _y;			// Высота карты
-	static int** _result;	// Массив пути, {{x, y}, {x, y}, ...}
+	static int _x;			// ГГЁГ°ГЁГ­Г  ГЄГ Г°ГІГ»
+	static int _y;			// Г‚Г»Г±Г®ГІГ  ГЄГ Г°ГІГ»
+	static int** _result;	// ГЊГ Г±Г±ГЁГў ГЇГіГІГЁ, {{x, y}, {x, y}, ...}
 	static int _finishX;
 	static int _finishY;
 	static bool _isResult;
@@ -36,19 +36,19 @@ private:
 	};
 
 	struct Logic {
-		// Если указанная клетка уже пройдена
+		// Г…Г±Г«ГЁ ГіГЄГ Г§Г Г­Г­Г Гї ГЄГ«ГҐГІГЄГ  ГіГ¦ГҐ ГЇГ°Г®Г©Г¤ГҐГ­Г 
 		bool _isBlack(int x, int y) const;
-		// Если вся карта уже просмотрена
+		// Г…Г±Г«ГЁ ГўГ±Гї ГЄГ Г°ГІГ  ГіГ¦ГҐ ГЇГ°Г®Г±Г¬Г®ГІГ°ГҐГ­Г 
 		bool _isEveryNodeIsBlack() const;
-		// Если есть результат
+		// Г…Г±Г«ГЁ ГҐГ±ГІГј Г°ГҐГ§ГіГ«ГјГІГ ГІ
 		bool _isResult() const;
-		// Если вершина с такими координатами уже есть в очереди
+		// Г…Г±Г«ГЁ ГўГҐГ°ГёГЁГ­Г  Г± ГІГ ГЄГЁГ¬ГЁ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ Г¬ГЁ ГіГ¦ГҐ ГҐГ±ГІГј Гў Г®Г·ГҐГ°ГҐГ¤ГЁ
 		bool _isEnqueued(int x, int y);
 	}Logic;
 
-	// Помещает в очередь все клетки, смежные с заданными координатами 
+	// ГЏГ®Г¬ГҐГ№Г ГҐГІ Гў Г®Г·ГҐГ°ГҐГ¤Гј ГўГ±ГҐ ГЄГ«ГҐГІГЄГЁ, Г±Г¬ГҐГ¦Г­Г»ГҐ Г± Г§Г Г¤Г Г­Г­Г»Г¬ГЁ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ Г¬ГЁ 
 	void _enqueueFrom(int fromX, int fromY);
-	// Выбирает из очереди клетку с минимальной стоимостью, устанавливает переданные параметры и удаляет указанную клетку из очереди
+	// Г‚Г»ГЎГЁГ°Г ГҐГІ ГЁГ§ Г®Г·ГҐГ°ГҐГ¤ГЁ ГЄГ«ГҐГІГЄГі Г± Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®Г© Г±ГІГ®ГЁГ¬Г®Г±ГІГјГѕ, ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГІ ГЇГҐГ°ГҐГ¤Г Г­Г­Г»ГҐ ГЇГ Г°Г Г¬ГҐГІГ°Г» ГЁ ГіГ¤Г Г«ГїГҐГІ ГіГЄГ Г§Г Г­Г­ГіГѕ ГЄГ«ГҐГІГЄГі ГЁГ§ Г®Г·ГҐГ°ГҐГ¤ГЁ
 	void _dequeueAndGetMin(int& minX, int& minY);
 	void _paintBlack(int x, int y);
 	void _goFirst(int startX, int startY);
@@ -63,6 +63,8 @@ public:
 		static Astar instance;
 		return instance;
 	}
+	
+	bool printLastTrack() {return true;} // TODO: remove that mock!
 
 	int** go(int** userMap, unsigned int mapX, unsigned int mapY, unsigned int startX, unsigned int startY, unsigned int finishX, unsigned int finishY);
 };
