@@ -64,7 +64,7 @@ public:
 		return instance;
 	}
 	
-	bool printLastTrack() {return true;} // TODO: remove that mock!
+	bool printLastTrack() {return false;} // TODO: remove that mock!
 
 	int** go(int** userMap, unsigned int mapX, unsigned int mapY, unsigned int startX, unsigned int startY, unsigned int finishX, unsigned int finishY);
 };
